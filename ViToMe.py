@@ -1,18 +1,24 @@
+""" 1. Перевод слова в слово
+    2. Добавить % статистику
+    3. Добавить Меню элементы
+    4. Научить читать слова как-надо
+"""
+
 import tkinter
 import tkinter.ttk
 import random
 
 class Application(tkinter.ttk.Frame):
     def __init__(self, master = None):
-    super().__init__(master)
-    self.pack()
-    self.create_widgets()
-    self.check_verb_list_en = []
-    self.check_adj_list_en = []
-    self.check_noun_list_en = []
-    self.random_int_verb = random.randrange(0, len(verb_list_en)-1)
-    self.random_int_adj = random.randrange(0, len(adj_list_en)-1)
-    self.random_int_noun = random.randrange(0, len(noun_list_en)-1)
+        super().__init__(master)
+        self.pack()
+        self.create_widgets()
+        self.check_verb_list_en = []
+        self.check_adj_list_en = []
+        self.check_noun_list_en = []
+        self.random_int_verb = random.randrange(0, len(verb_list_en)-1)
+        self.random_int_adj = random.randrange(0, len(adj_list_en)-1)
+        self.random_int_noun = random.randrange(0, len(noun_list_en)-1)
 
     def create_widgets(self):
         self.MainText = tkinter.Frame(self.master, height = 70, width = 70)
@@ -30,51 +36,54 @@ class Application(tkinter.ttk.Frame):
         self.Verb.configure(text = verb_list_ru[random_int_verb])
     def click_button(self):
 
-if len(verb_list_en)==0:
-self.random_verb = 'Out of list'
-elif len(verb_list_en)==1:
-self.random_verb = verb_list_en[0]
-else:
-random_int_verb = random.randrange(0, len(verb_list_en)-1)
-self.random_verb = verb_list_en[random_int_verb]
-if len(adj_list_en)==0:
-self.random_adj = 'Out of list'
-elif len(adj_list_en)==1:
-self.random_adj = adj_list_en[0]
-else:
-random_int_adj = random.randrange(0, len(adj_list_en)-1)
-self.random_adj = adj_list_en[random_int_adj]
-if len(noun_list_en)==0:
-self.random_noun = 'Out of list'
-elif len(noun_list_en)==1:
-self.random_noun = noun_list_en[0]
-else:
-random_int_noun = random.randrange(0, len(noun_list_en)-1)
-self.random_noun = noun_list_en[random_int_noun]
+        if len(verb_list_en)==0:
+            self.random_verb = 'Out of list'
+        elif len(verb_list_en)==1:
+            self.random_verb = verb_list_en[0]
+        else:
+            random_int_verb = random.randrange(0, len(verb_list_en)-1)
+            self.random_verb = verb_list_en[random_int_verb]
+        if len(adj_list_en)==0:
+            self.random_adj = 'Out of list'
+        elif len(adj_list_en)==1:
+            self.random_adj = adj_list_en[0]
+        else:
+            random_int_adj = random.randrange(0, len(adj_list_en)-1)
+            self.random_adj = adj_list_en[random_int_adj]
+        if len(noun_list_en)==0:
+            self.random_noun = 'Out of list'
+        elif len(noun_list_en)==1:
+            self.random_noun = noun_list_en[0]
+        else:
+            random_int_noun = random.randrange(0, len(noun_list_en)-1)
+            self.random_noun = noun_list_en[random_int_noun]
 
-if self.random_verb in self.check_verb_list_en and self.random_verb != "Out of list": #Тут ошибка, одно совпадение не означает три совпадения
-if self.check_verb_list_en.count(self.random_verb) > 1:
-verb_list_en.remove('{0}'.format(self.random_verb))
-del verb_list_ru[self.random_int_verb]
-if self.random_adj in self.check_adj_list_en and self.random_adj != "Out of list":
-if self.check_adj_list_en.count(self.random_adj) > 1:
-adj_list_en.remove('{0}'.format(self.random_adj))
-del adj_list_ru[self.random_int_adj]
-if self.random_noun in self.check_noun_list_en and self.random_noun != "Out of list":
-if self.check_noun_list_en.count(self.random_noun) > 1:
-noun_list_en.remove('{0}'.format(self.random_noun))
-del noun_list_ru[self.random_int_noun]
+        if self.random_verb in self.check_verb_list_en and self.random_verb != "Out of list": #Тут ошибка, одно совпадение не означает три совпадения
+            if self.check_verb_list_en.count(self.random_verb) > 1:
+                verb_list_en.remove('{0}'.format(self.random_verb))
+                del verb_list_ru[self.random_int_verb]
+    
+        if self.random_adj in self.check_adj_list_en and self.random_adj != "Out of list":
+            if self.check_adj_list_en.count(self.random_adj) > 1:
+                adj_list_en.remove('{0}'.format(self.random_adj))
+                del adj_list_ru[self.random_int_adj]
+    
+        if self.random_noun in self.check_noun_list_en and self.random_noun != "Out of list":
+            if self.check_noun_list_en.count(self.random_noun) > 1:
+                noun_list_en.remove('{0}'.format(self.random_noun))
+                del noun_list_ru[self.random_int_noun]
+    
 
-self.check_verb_list_en.append(self.random_verb)
-self.check_adj_list_en.append(self.random_adj)
-self.check_noun_list_en.append(self.random_noun)
+        self.check_verb_list_en.append(self.random_verb)
+        self.check_adj_list_en.append(self.random_adj)
+        self.check_noun_list_en.append(self.random_noun)
 
-self.Verb.configure(text = self.random_verb)
-self.Adj.configure(text = self.random_adj)
-self.Noun.configure(text = self.random_noun)
-print(self.check_verb_list_en)
-print(self.check_adj_list_en)
-print(self.check_noun_list_en)
+        self.Verb.configure(text = self.random_verb)
+        self.Adj.configure(text = self.random_adj)
+        self.Noun.configure(text = self.random_noun)
+        print(self.check_verb_list_en)
+        print(self.check_adj_list_en)
+        print(self.check_noun_list_en)
 
 
 root = tkinter.Tk()
@@ -82,38 +91,38 @@ root.resizable(True,True)
 root.title('Visualize To Memorize')
 
 file_verb = open(r".verbs.txt")
-onstring = file_verb.read().split('\n')[☺
+onstring = file_verb.read().split('\n')
 verb_list_en = list()
 verb_list_ru = list()
 for item in onstring:
-key = item.split(' ')[0]
-value = item.split(' ')[2☺
-verb_list_en.append(key)
-verb_list_ru.append(value)
+    key = item.split(' ')[0]
+    value = item.split(' ')[2:]
+    verb_list_en.append(key)
+    verb_list_ru.append(value)
 print(verb_list_en, verb_list_ru)
 file_verb.close()
+
 file_adj = open(r".adjectives.txt")
-onstring = file_adj.read().split('\n')[☺
+onstring = file_adj.read().split('\n')
 adj_list_en = list()
 adj_list_ru = list()
 for item in onstring:
-key = item.split(' ')[0]
-value = item.split(' ')[2☺
-adj_list_en.append(key)
-adj_list_ru.append(value)
+    key = item.split(' ')[0]
+    value = item.split(' ')[2:]
+    adj_list_en.append(key)
+    adj_list_ru.append(value)
 print(adj_list_en, adj_list_ru)
 file_adj.close()
+
 file_noun = open(r".nouns.txt")
-onstring = file_noun.read().split('\n')[☺
+onstring = file_noun.read().split('\n')[0]
 noun_list_en = list()
 noun_list_ru = list()
 for item in onstring:
-key = item.split(' ')[0]
-value = item.split(' ')[2☺
-self.click - Domain Name for sale
-self.click
-noun_list_en.append(key)
-noun_list_ru.append(value)
+    key = item.split(' ')[0]
+    value = item.split(' ')[2:]
+    noun_list_en.append(key)
+    noun_list_ru.append(value)
 print(noun_list_en, noun_list_ru)
 file_noun.close()
 
